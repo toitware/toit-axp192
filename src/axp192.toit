@@ -265,3 +265,32 @@ clear_bits device register bits:
   reg := (device.registers.read_bytes register 1)
   reg[0] &= ~bits
   device.registers.write_bytes register reg
+
+REG_TO_NAME ::= {
+  0x00: "Power status",
+  0x01: "Power mode charge status",
+  0x04: "OTG VBUS status",
+  0x10: "EXTEN and DC_DC2 switch control",
+  0x12: "Power output control",
+  0x23: "DC_DC2 voltage setting",
+  0x26: "DC_DC1 voltage setting",
+  0x27: "DC_DC3 voltage setting",
+  0x25: "DC_DC2 voltage slope parameter setting",
+  0x28: "LDO2/3 voltage setting",
+  0x30: "VBUS IPSOUT path setting",
+  0x31: "V_OFF shutdown voltage setting",
+  0x32: "Shutdown battery detection CHGLED control",
+  0x33: "Charge control 1",
+  0x34: "Charge control 2",
+  0x35: "Backup battery charge control",
+  0x36: "PEK parameter setting",
+  0x82: "ADC enable setting 1",
+  0x83: "ADC enable setting 2",
+  0x90: "GPIO 0 control",
+  0x92: "GPIO 1 control",
+  0x93: "GPIO 2 control",
+  0x91: "GPIO 0 LDO mode output voltage settings",
+  0x94: "GPIO 2:0 signal status",
+  0x95: "GPIO 4:3 functions control",
+  0x96: "GPIO 4:3 signal status",
+}
