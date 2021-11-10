@@ -254,19 +254,20 @@ GPIO_3_READ_INPUT   ::= 0b0001_0000
 GPIO_4_WRITE_OUTPUT ::= 0b0000_0010
 GPIO_3_WRITE_OUTPUT ::= 0b0000_0001
 
-// Set the given bits to 1 in the register.  If the mask is given
-// then the bits in the mask are first cleared.
+/// Set the given bits to 1 in the register.  If the mask is given
+///   then the bits in the mask are first cleared.
 set_bits device register/int bits/int --mask=bits:
   reg := (device.registers.read_bytes register 1)
   reg[0] = (reg[0] & (mask ^ 0xff)) | bits
   device.registers.write_bytes register reg
 
+/// Clear the given bits in the register. 
 clear_bits device register bits:
   reg := (device.registers.read_bytes register 1)
   reg[0] &= ~bits
   device.registers.write_bytes register reg
 
-REG_TO_NAME ::= {
+REGISTER_TO_NAME ::= {
   0x00: "Power status",
   0x01: "Power mode charge status",
   0x04: "OTG VBUS status",
