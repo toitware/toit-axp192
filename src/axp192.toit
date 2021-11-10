@@ -258,17 +258,10 @@ GPIO_3_WRITE_OUTPUT ::= 0b0000_0001
 // then the bits in the mask are first cleared.
 set_bits device register/int bits/int --mask=bits:
   reg := (device.registers.read_bytes register 1)
-  print "set_bits register 0x$(%02x register) contains  0x$(%02x reg[0])"
   reg[0] = (reg[0] & (mask ^ 0xff)) | bits
-  print "set_bits register 0x$(%02x register) update to 0x$(%02x reg[0])"
   device.registers.write_bytes register reg
-  reg = (device.registers.read_bytes register 1)
-  print "set_bits register 0x$(%02x register) readback  0x$(%02x reg[0])"
-  print ""
 
 clear_bits device register bits:
   reg := (device.registers.read_bytes register 1)
-  print "clr_bits register 0x$(%02x register) contains  0x$(%02x reg[0])"
   reg[0] &= ~bits
-  print "clr_bits register 0x$(%02x register) update to 0x$(%02x reg[0])"
   device.registers.write_bytes register reg
