@@ -6,3 +6,6 @@ typically uses the ID 0x34.
 
 See the m5stack-core2 package for an example of how this
 package is used.
+
+English-language datasheet is at
+https://images.shoutwiki.com/mindworks/8/8b/2020_infrasonic_wildfire_detector_APX192_Enhanced_Single_Cell_datasheet_en.pdf
