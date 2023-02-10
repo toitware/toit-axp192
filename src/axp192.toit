@@ -14,6 +14,8 @@ See the m5stack_core2 driver for an example of how to use
 import gpio
 import i2c
 
+I2C_ADDRESS ::= 0x34
+
 // Read-only registers.
 POWER_STATUS_REGISTER ::= 0
 POWER_STATUS_ACIN_EXISTS ::=            0b1000_0000
@@ -261,37 +263,37 @@ set_bits device register/int bits/int --mask=bits:
   reg[0] = (reg[0] & (mask ^ 0xff)) | bits
   device.registers.write_bytes register reg
 
-/// Clear the given bits in the register. 
+/// Clear the given bits in the register.
 clear_bits device register bits:
   reg := (device.registers.read_bytes register 1)
   reg[0] &= ~bits
   device.registers.write_bytes register reg
 
 REGISTER_TO_NAME ::= {
-  0x00: "Power status",
-  0x01: "Power mode charge status",
-  0x04: "OTG VBUS status",
-  0x10: "EXTEN and DC_DC2 switch control",
-  0x12: "Power output control",
-  0x23: "DC_DC2 voltage setting",
-  0x26: "DC_DC1 voltage setting",
-  0x27: "DC_DC3 voltage setting",
-  0x25: "DC_DC2 voltage slope parameter setting",
-  0x28: "LDO2/3 voltage setting",
-  0x30: "VBUS IPSOUT path setting",
-  0x31: "V_OFF shutdown voltage setting",
-  0x32: "Shutdown battery detection CHGLED control",
-  0x33: "Charge control 1",
-  0x34: "Charge control 2",
-  0x35: "Backup battery charge control",
-  0x36: "PEK parameter setting",
-  0x82: "ADC enable setting 1",
-  0x83: "ADC enable setting 2",
-  0x90: "GPIO 0 control",
-  0x92: "GPIO 1 control",
-  0x93: "GPIO 2 control",
-  0x91: "GPIO 0 LDO mode output voltage settings",
-  0x94: "GPIO 2:0 signal status",
-  0x95: "GPIO 4:3 functions control",
-  0x96: "GPIO 4:3 signal status",
+  POWER_STATUS_REGISTER:                              "Power status",
+  POWER_MODE_CHARGE_STATUS_REGISTER:                  "Power mode charge status",
+  OTG_VBUS_STATUS_REGISTER:                           "OTG VBUS status",
+  EXTEN_AND_DC_DC2_SWITCH_CONTROL_REGISTER:           "EXTEN and DC_DC2 switch control",
+  POWER_OUTPUT_CONTROL_REGISTER:                      "Power output control",
+  DC_DC2_VOLTAGE_SETTING_REGISTER:                    "DC_DC2 voltage setting",
+  DC_DC1_VOLTAGE_SETTING_REGISTER:                    "DC_DC1 voltage setting",
+  DC_DC3_VOLTAGE_SETTING_REGISTER:                    "DC_DC3 voltage setting",
+  DC_DC2_VOLTAGE_SLOPE_PARAMETER_SETTING_REGISTER:    "DC_DC2 voltage slope parameter setting",
+  LDO2_3_VOLTAGE_SETTING_REGISTER:                    "LDO2/3 voltage setting",
+  VBUS_IPSOUT_PATH_SETTING_REGISTER:                  "VBUS IPSOUT path setting",
+  V_OFF_SHUTDOWN_VOLTAGE_SETTING_REGISTER:            "V_OFF shutdown voltage setting",
+  SHUTDOWN_BATTERY_DETECTION_CHGLED_CONTROL_REGISTER: "Shutdown battery detection CHGLED control",
+  CHARGE_CONTROL_REGISTER_1:                          "Charge control 1",
+  CHARGE_CONTROL_REGISTER_2:                          "Charge control 2",
+  BACKUP_BATTERY_CHARGE_CONTROL_REGISTER:             "Backup battery charge control",
+  PEK_PARAMETER_SETTING_REGISTER:                     "PEK parameter setting",
+  ADC_ENABLE_SETTING_REGISTER_1:                      "ADC enable setting 1",
+  ADC_ENABLE_SETTING_REGISTER_2:                      "ADC enable setting 2",
+  GPIO_0_CONTROL_REGISTER:                            "GPIO 0 control",
+  GPIO_1_CONTROL_REGISTER:                            "GPIO 1 control",
+  GPIO_2_CONTROL_REGISTER:                            "GPIO 2 control",
+  GPIO_0_LDO_MODE_OUTPUT_VOLTAGE_SETTING_REGISTER:    "GPIO 0 LDO mode output voltage settings",
+  GPIO_2_0_SIGNAL_STATUS_REGISTER:                    "GPIO 2:0 signal status",
+  GPIO_4_3_FUNCTION_CONTROL_REGISTER:                 "GPIO 4:3 functions control",
+  GPIO_4_3_SIGNAL_STATUS_REGISTER:                    "GPIO 4:3 signal status",
 }
