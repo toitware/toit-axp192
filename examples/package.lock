@@ -1,0 +1,5 @@
+prefixes:
+  axp192: ..
+packages:
+  ..:
+    path: ..
