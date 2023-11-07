@@ -1,0 +1,2 @@
+name: axp192
+description: Constants and helper functions for driving the AXP192 power control chip.
